@@ -38,7 +38,7 @@ event zeek_init()
 
 event http_reply(c: connection, version: string, code: count, reason: string)
     {
-    	print fmt ("The connection is %s", c$http$host);
+    	#print fmt ("The connection is %s", c$http$host);
         SumStats::observe("all reply num",SumStats::Key($host=c$id$orig_h),SumStats::Observation($num=1));
         #SumStats::observe("all reply host num",SumStats::Key($host=c$id$orig_h), SumStats::Observation($str=c$http$host));
         if ( code == 404 )
