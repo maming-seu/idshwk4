@@ -28,7 +28,7 @@ event zeek_init()
                             {
                                 if ( numof404unique$num > 0.5*numof404$num )
                                 {
-                                    print fmt("%s is a scanner with %s scan attemps on %s urls",key$host,numof404$num,numof404unique$num);
+                                    print fmt("%s is a scanner with %s scan attemps on %s urls",key$host,numof404$num,numof404unique$unique);
                                 }
                             }
                         }
