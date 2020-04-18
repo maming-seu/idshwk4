@@ -22,8 +22,6 @@ event zeek_init()
                         local numof404 = result["404 reply num"];
                         local allreply = result["all reply num"];
                         local numof404unique = result["404 reply num unique"];
-                        $epoch_result(ts: time, key: SumStats::Key, result: SumStats::Result) =
-                        {
                         if ( numof404$num > 2 )
                         {
                             if ( numof404$num > 0.2*allreply$num )
