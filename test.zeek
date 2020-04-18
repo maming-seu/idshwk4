@@ -26,6 +26,7 @@ event zeek_init()
                         {
                             if ( numof404$num >allreply$num*0.2 )
                             {
+                                
                                 if ( numof404unique$unique > numof404$num*0.5 )
                                 {
                                     print fmt("%s is a scanner with %s scan attemps on %s urls",key$host,numof404$num,numof404unique$unique);
@@ -41,7 +42,7 @@ event http_reply(c: connection, version: string, code: count, reason: string)
     	local st1 = c$http$host;
     	local st2 = c$http$uri;
     	local st3 = st1 + st2;
-    	print st3;
+    	#print st3;
         SumStats::observe("all reply num",SumStats::Key($host=c$id$orig_h),SumStats::Observation($num=1));
         #SumStats::observe("all reply host num",SumStats::Key($host=c$id$orig_h), SumStats::Observation($str=st3));
         if ( code == 404 )
