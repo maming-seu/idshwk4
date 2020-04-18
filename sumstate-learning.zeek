@@ -38,13 +38,16 @@ event zeek_init()
 
 event http_reply(c: connection, version: string, code: count, reason: string)
     {
-    	#print fmt ("The connection is %s", c$http$host);
+    	local st1 = c$http$host;
+    	local st2 = c$http$uri;
+    	local st3 = st1 + st2;
+    	print st3;
         SumStats::observe("all reply num",SumStats::Key($host=c$id$orig_h),SumStats::Observation($num=1));
-        #SumStats::observe("all reply host num",SumStats::Key($host=c$id$orig_h), SumStats::Observation($str=c$http$host));
+        #SumStats::observe("all reply host num",SumStats::Key($host=c$id$orig_h), SumStats::Observation($str=st3));
         if ( code == 404 )
         {
         
         SumStats::observe("404 reply num", SumStats::Key($host=c$id$orig_h), SumStats::Observation($num=1));
-        SumStats::observe("404 reply host unique",SumStats::Key($host=c$id$orig_h), SumStats::Observation($str=c$http$host));
+        SumStats::observe("404 reply host unique",SumStats::Key($host=c$id$orig_h), SumStats::Observation($str=st3));
         }
     }
