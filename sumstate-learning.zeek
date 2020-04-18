@@ -21,7 +21,7 @@ event zeek_init()
                         {
                         local numof404 = result["404 reply num"];
                         local allreply = result["all reply num"];
-                        local numof404unique = result["404 reply num unique"];
+                        local numof404unique = result["404 reply host unique"];
                         if ( numof404$num > 2 )
                         {
                             if ( numof404$num > 0.2*allreply$num )
