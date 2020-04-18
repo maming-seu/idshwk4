@@ -24,9 +24,9 @@ event zeek_init()
                         local numof404unique = result["404 reply host unique"];
                         if ( numof404$num > 2 )
                         {
-                            if ( numof404$num > 0.2*allreply$num )
+                            if ( numof404$num >allreply$num*0.2 )
                             {
-                                if ( numof404unique$num > 0.5*numof404$num )
+                                if ( numof404unique$num > numof404$num*0.5 )
                                 {
                                     print fmt("%s is a scanner with %s scan attemps on %s urls",key$host,numof404$num,numof404unique$unique);
                                 }
